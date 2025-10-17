@@ -9,7 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Reset y variables */
         :root {
             --primary: #1a2332;
             --secondary: #6c757d;
@@ -31,6 +30,12 @@
             line-height: 1.6;
         }
 
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
         /* Header y navegación */
         header {
             background-color: var(--primary);
@@ -40,12 +45,6 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
         nav {
@@ -127,8 +126,8 @@
             font-weight: 500;
         }
 
-        /* Sección de propiedades */
-        .properties {
+        /* Sección genérica */
+        .section {
             padding: 4rem 0;
         }
 
@@ -140,6 +139,122 @@
             color: var(--primary);
         }
 
+        /* Sobre nosotros */
+        .about {
+            background-color: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #a1825b;
+        }
+
+        /* Vende tu propiedad */
+        .sell-property {
+            background-color: var(--light);
+        }
+
+        .sell-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .sell-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        /* Testimonios */
+        .testimonials {
+            background-color: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .testimonial-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            overflow: hidden;
+        }
+
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .testimonial-role {
+            color: var(--secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Propiedades */
         .properties-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -268,6 +383,18 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             z-index: 1000;
         }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-content,
+            .sell-content {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -277,22 +404,23 @@
             <nav>
                 <div class="logo">The Address Club</div>
                 <ul class="nav-links">
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Propiedades</a></li>
-                    <li><a href="#">Sobre nosotros</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#propiedades">Propiedades</a></li>
+                    <li><a href="#sobre-nosotros">Sobre nosotros</a></li>
+                    <li><a href="#vende-tu-propiedad">Vende tu propiedad</a></li>
+                    <li><a href="#testimonios">Testimonios</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="inicio">
         <div class="container">
             <div class="hero-content">
                 <h1>Encuentra tu propiedad de ensueño</h1>
-                <p>Descubre las propiedades de lujo más exclusivas en las mejores ubicaciones.</p>
+                <p>Descubre las propiedades de lujo más exclusivas en las mejores ubicaciones de Londres y el Reino Unido.</p>
                 <div class="search-box">
                     <input type="text" placeholder="Buscar por ubicación, tipo o precio...">
                     <button>Buscar</button>
@@ -302,7 +430,7 @@
     </section>
 
     <!-- Propiedades destacadas -->
-    <section class="properties">
+    <section class="section properties" id="propiedades">
         <div class="container">
             <h2 class="section-title">Propiedades Destacadas</h2>
             <div class="properties-grid">
@@ -340,8 +468,119 @@
         </div>
     </section>
 
+    <!-- Sobre Nosotros -->
+    <section class="section about" id="sobre-nosotros">
+        <div class="container">
+            <h2 class="section-title">Sobre Nosotros</h2>
+            <div class="about-content">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Oficina The Address Club" style="width: 100%; border-radius: 8px;">
+                </div>
+                <div class="about-text">
+                    <h3 style="font-family: 'Playfair Display', serif; color: var(--primary); margin-bottom: 1rem;">Experiencia y Elegancia en Bienes Raíces</h3>
+                    <p>En <strong>The Address Club</strong>, nos especializamos en conectar a nuestros clientes con las propiedades más exclusivas de Londres y el Reino Unido. Con más de 15 años de experiencia en el mercado inmobiliario de lujo, nuestro equipo de expertos está dedicado a ofrecer un servicio personalizado, discreto y profesional.</p>
+                    <p>Entendemos que cada cliente es único, por eso nos enfocamos en escuchar tus necesidades y superar tus expectativas. Ya sea que busques un apartamento en el corazón de Mayfair, una casa familiar en Kensington o una inversión en propiedades comerciales, estamos aquí para guiarte en cada paso del proceso.</p>
+                    <p>Nuestra red de contactos y conocimiento del mercado nos permite acceder a propiedades que no están disponibles públicamente, asegurando que encuentres el hogar o la inversión perfecta.</p>
+                    <a href="#contacto" class="btn">Contáctanos</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vende tu Propiedad -->
+    <section class="section sell-property" id="vende-tu-propiedad">
+        <div class="container">
+            <h2 class="section-title">Vende tu Propiedad con Nosotros</h2>
+            <div class="sell-content">
+                <div>
+                    <h3 style="font-family: 'Playfair Display', serif; color: var(--primary); margin-bottom: 1rem;">Maximiza el valor de tu propiedad</h3>
+                    <p>Si estás considerando vender tu propiedad, en <strong>The Address Club</strong> te ofrecemos una evaluación gratuita y un plan de marketing personalizado para asegurar que tu propiedad alcance su máximo potencial en el mercado.</p>
+                    <p>Nuestro enfoque incluye:</p>
+                    <ul style="margin: 1.5rem 0; color: var(--secondary);">
+                        <li>Valuación profesional y precisa.</li>
+                        <li>Fotografía y videos de alta calidad.</li>
+                        <li>Promoción en plataformas exclusivas y redes internacionales.</li>
+                        <li>Asesoramiento legal y financiero.</li>
+                        <li>Negociación experta para obtener el mejor precio.</li>
+                    </ul>
+                    <p>Confía en nosotros para hacer que el proceso de venta sea fluido, transparente y exitoso.</p>
+                </div>
+                <div class="sell-form">
+                    <h3 style="margin-bottom: 1.5rem; color: var(--primary);">Solicita una valuación</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Nombre completo</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo electrónico</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Teléfono</label>
+                            <input type="tel" id="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="property-type">Tipo de propiedad</label>
+                            <select id="property-type" required>
+                                <option value="">Selecciona...</option>
+                                <option value="apartment">Apartamento</option>
+                                <option value="house">Casa</option>
+                                <option value="penthouse">Penthouse</option>
+                                <option value="commercial">Comercial</option>
+                                <option value="land">Terreno</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Ubicación</label>
+                            <input type="text" id="location" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensaje</label>
+                            <textarea id="message" rows="4" placeholder="Cuéntanos sobre tu propiedad..."></textarea>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%;">Enviar solicitud</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="section testimonials" id="testimonios">
+        <div class="container">
+            <h2 class="section-title">Testimonios de Nuestros Clientes</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-avatar">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Cliente 1">
+                    </div>
+                    <div class="testimonial-name">Sophia Laurent</div>
+                    <div class="testimonial-role">Dueña de un penthouse en Chelsea</div>
+                    <p>"The Address Club hizo que la venta de mi penthouse fuera increíblemente sencilla. Su equipo no solo encontró al comprador ideal en menos de un mes, sino que también manejó todos los detalles con profesionalismo y discreción. ¡Altamente recomendados!"</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-avatar">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Cliente 2">
+                    </div>
+                    <div class="testimonial-name">James Whitmore</div>
+                    <div class="testimonial-role">Inversor inmobiliario</div>
+                    <p>"He trabajado con varios agentes en Londres, pero nadie entiende el mercado de lujo como el equipo de The Address Club. Su conocimiento y red de contactos son insuperables. Ya he cerrado tres transacciones con ellos y planeo seguir haciéndolo."</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-avatar">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Cliente 3">
+                    </div>
+                    <div class="testimonial-name">Isabella Rossi</div>
+                    <div class="testimonial-role">Compradora de una casa en Kensington</div>
+                    <p>"Encontré mi hogar soñado gracias a The Address Club. Desde el primer contacto hasta la firma, me sentí apoyada y bien asesorada. Su atención al detalle y paciencia fueron clave para tomar la mejor decisión."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
-    <footer>
+    <footer id="contacto">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
@@ -356,10 +595,11 @@
                 <div class="footer-column">
                     <h4>Enlaces rápidos</h4>
                     <ul>
-                        <li><a href="#">Inicio</a></li>
-                        <li><a href="#">Propiedades</a></li>
-                        <li><a href="#">Sobre nosotros</a></li>
-                        <li><a href="#">Contacto</a></li>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#propiedades">Propiedades</a></li>
+                        <li><a href="#sobre-nosotros">Sobre nosotros</a></li>
+                        <li><a href="#vende-tu-propiedad">Vende tu propiedad</a></li>
+                        <li><a href="#testimonios">Testimonios</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -378,7 +618,7 @@
     </footer>
 
     <!-- Botón de contacto flotante -->
-    <a href="#" class="contact-fab">
+    <a href="#contacto" class="contact-fab">
         <i class="fas fa-envelope"></i>
     </a>
 </body>
